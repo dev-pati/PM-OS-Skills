@@ -66,54 +66,54 @@ Nạp **tập tối thiểu đủ dùng**. Hai skill là thường, bốn là nh
 
 | Khi nào | Skill | Ghi chú |
 |---|---|---|
-| Mở đầu mọi build | `/build-connected` | Orchestrator. Tự gọi grilling, domain-modeling, vault-system-thinking, to-spec, to-tickets |
-| Trước khi hỏi bất cứ gì | `/vault-knowledge-retrieval` | Câu trả lời thường đã có trong vault, có trích dẫn, cờ stale |
-| Gate 1 (B1–B9) | `/grilling` hoặc `/grill-with-docs` | Bản `-with-docs` để lại ADR + glossary |
-| Ngôn ngữ domain còn mờ | `/domain-modeling` | Ubiquitous language → `CONTEXT.md` |
-| **Gate 2** | `/vault-system-thinking` | 8 plane, reverse trace, mỗi seam hoãn phải có `TD-`/`BL-` |
-| Ý tưởng chưa định hình | `/brainstorming` | Trước cả Gate 1 |
-| Viết spec | `/to-spec` | Không phỏng vấn, chỉ tổng hợp |
-| Chia ticket | `/to-tickets` | Ticket đầu là tracer, có blocking edge |
-| Quá lớn cho một session | `/wayfinder` | Chia thành decision ticket |
-| Cần bằng chứng ngoài | `/user-research` `/market-research` `/research` | B2, B4, B9 |
-| Câu hỏi kỹ thuật chưa rõ | `/technical-spike` | Time-boxed, có exit criteria |
+| Mở đầu mọi build | `/pm-build-connected` | Orchestrator. Tự gọi grilling, domain-modeling, vault-system-thinking, to-spec, to-tickets |
+| Trước khi hỏi bất cứ gì | `/pm-vault-knowledge-retrieval` | Câu trả lời thường đã có trong vault, có trích dẫn, cờ stale |
+| Gate 1 (B1–B9) | `/pm-grilling` hoặc `/pm-grill-with-docs` | Bản `-with-docs` để lại ADR + glossary |
+| Ngôn ngữ domain còn mờ | `/pm-domain-modeling` | Ubiquitous language → `CONTEXT.md` |
+| **Gate 2** | `/pm-vault-system-thinking` | 8 plane, reverse trace, mỗi seam hoãn phải có `TD-`/`BL-` |
+| Ý tưởng chưa định hình | `/pm-brainstorming` | Trước cả Gate 1 |
+| Viết spec | `/pm-to-spec` | Không phỏng vấn, chỉ tổng hợp |
+| Chia ticket | `/pm-to-tickets` | Ticket đầu là tracer, có blocking edge |
+| Quá lớn cho một session | `/pm-wayfinder` | Chia thành decision ticket |
+| Cần bằng chứng ngoài | `/user-research` `/market-research` `/pm-research` | B2, B4, B9 |
+| Câu hỏi kỹ thuật chưa rõ | `/pm-technical-spike` | Time-boxed, có exit criteria |
 | Cần thử UI trước khi cam kết | `/prototype` | Throwaway, trả lời một câu hỏi |
-| Quyết định cần người khác trả lời | `/to-questionnaire` | Biến deadlock thành form |
+| Quyết định cần người khác trả lời | `/pm-to-questionnaire` | Biến deadlock thành form |
 
 ### Phase B — Delivery
 
 | Khi nào | Skill | Ghi chú |
 |---|---|---|
-| Stage 01 | `/triage` | 5 label; `ready-for-agent` cần Gate 1 đã pass |
-| Issue người khác dán vào | `/linear-problem-report` | Giải thích lại: cái gì vỡ, lỗ nào mở ra, fix gì, còn gì chưa quyết |
-| Stage 03 chẩn đoán | `/bug-reproduction-brief` → `/systematic-debugging` | Repro tối thiểu trước khi sửa; 4 phase root cause |
+| Stage 01 | `/pm-triage` | 5 label; `ready-for-agent` cần Gate 1 đã pass |
+| Issue người khác dán vào | `/pm-linear-problem-report` | Giải thích lại: cái gì vỡ, lỗ nào mở ra, fix gì, còn gì chưa quyết |
+| Stage 03 chẩn đoán | `/bug-reproduction-brief` → `/pm-systematic-debugging` | Repro tối thiểu trước khi sửa; 4 phase root cause |
 | Stage 04 thiết kế | `/codebase-design` | Deep module, design-it-twice |
 | Stage 05 | `/tdd` → `/implement` | Strict: `/test-driven-development` |
 | Gate deploy | `/code-review` + `/differential-review` | Hai trục: Standards vs Spec; diff review có blast radius |
-| Stage 06A | `/verification-before-completion` | Bằng chứng trước khi nói "done" |
+| Stage 06A | `/pm-verification-before-completion` | Bằng chứng trước khi nói "done" |
 | Đường browser | `/e2e-testing` | Playwright POM, flaky strategy |
-| Trước deploy | `/rollout-plan` | Preflight, verification signal, rollback, comms |
+| Trước deploy | `/pm-rollout-plan` | Preflight, verification signal, rollback, comms |
 | Chạm DB | `/supabase` `/supabase-postgres-best-practices` | Đọc luật migration của repo trước |
 | Chạm UI | `/react-best-practices` `/frontend-design` `/web-design-guidelines` `/accessibility` | `/ui-ux-pro-max` khi cần bảng màu/font |
 | Bề mặt có quyền | `/threat-model` `/security-best-practices` | Trust boundary, abuse path |
 | Việc AI | `/prompt-review` `/agentic-eval` `/llm-cost-optimization` | |
 | Nhiều task song song | `/dispatching-parallel-agents` `/subagent-driven-development` | Một subagent tươi mỗi task |
 | Nhánh riêng | `/using-git-worktrees` → `/finishing-a-development-branch` | |
-| Hết session | `/handoff` | Nén hội thoại cho agent kế |
+| Hết session | `/pm-handoff` | Nén hội thoại cho agent kế |
 
 ### Phase C — Adoption + learning
 
 | Khi nào | Skill | Ghi chú |
 |---|---|---|
-| Sau ship | `/vault-note-update` | Một fact → mọi doc phụ thuộc, hai chiều, **cùng change** |
-| Doc mới | `/vault-note-creation` | PRD/API/DATAFLOW/BPMN theo `AGENTS.md` §2 |
-| Production vỡ | `/incident-postmortem` | Đo trước, sửa sau |
-| Báo cáo | `/internal-comms` `/daily-app-status` | |
-| Trả lời team khác | `/evidence-backed-cross-project-replies` | Chỉ fact kiểm trong session này, không lấy từ ký ức |
+| Sau ship | `/pm-vault-note-update` | Một fact → mọi doc phụ thuộc, hai chiều, **cùng change** |
+| Doc mới | `/pm-vault-note-creation` | PRD/API/DATAFLOW/BPMN theo `AGENTS.md` §2 |
+| Production vỡ | `/pm-incident-postmortem` | Đo trước, sửa sau |
+| Báo cáo | `/pm-internal-comms` `/daily-app-status` | |
+| Trả lời team khác | `/pm-evidence-backed-cross-project-replies` | Chỉ fact kiểm trong session này, không lấy từ ký ức |
 | Cadence | `/update-action-plan` | Quét worktree/branch vào Action Plan |
-| Visual | `/architecture-diagram` `/html-canvas` `/json-canvas` `/bpmn` | Sơ đồ này dựng bằng `/architecture-diagram` |
+| Visual | `/pm-architecture-diagram` `/pm-html-canvas` `/json-canvas` `/pm-bpmn` | Sơ đồ này dựng bằng `/pm-architecture-diagram` |
 | Đo lường | `/experimentation` `/analytics-instrumentation` | B4 KPI, B7 unused signal |
-| Sửa skill / AGENTS.md | `/writing-for-agents` `/writing-skills` | |
+| Sửa skill / AGENTS.md | `/pm-writing-for-agents` `/writing-skills` | |
 
 ---
 

@@ -10,7 +10,7 @@ This is the rule that keeps the two systems from drifting apart:
 
 - **`product/backlog.md` (BL-01…BL-36) is the queue.** It is scored by P&L and is where work is *chosen*. Nothing enters `.scratch/` without a BL id — either an existing one or a new one appended to the Master Backlog in the same change.
 - **`.scratch/<feature-slug>/` is the workbench.** It holds the spec and tickets for the one BL item currently in flight, and is disposable once the work lands in the code and the docs graph.
-- **`src/<feature>/PRD/` and the AS-IS set are the destination.** When the work ships, the durable record lands there via `/vault-note-update`. A finished `.scratch/` directory is not a record of anything.
+- **`src/<feature>/PRD/` and the AS-IS set are the destination.** When the work ships, the durable record lands there via `/pm-vault-note-update`. A finished `.scratch/` directory is not a record of anything.
 
 `architecture/tech-debt.md` (TD-01…TD-28, S1–S8) is the other half of the queue: risk and breakage rather than value.
 
@@ -21,7 +21,7 @@ This is the rule that keeps the two systems from drifting apart:
 - Implementation tickets are one file per ticket at `.scratch/<feature-slug>/issues/<NN>-<slug>.md`, numbered from `01` — never one combined file
 - Triage state is a `Status:` line near the top of each file (role strings in `triage-labels.md`)
 - Conversation appends to the bottom under `## Comments`
-- The Impact Trace produced by `/vault-system-thinking` is stored at `.scratch/<feature-slug>/impact-trace.md` and referenced from the spec
+- The Impact Trace produced by `/pm-vault-system-thinking` is stored at `.scratch/<feature-slug>/impact-trace.md` and referenced from the spec
 
 ## When a skill says "publish to the issue tracker"
 
@@ -33,7 +33,7 @@ Read the file at the referenced path. Resolve a bare `BL-xx` / `TD-xx` against t
 
 ## Wayfinding operations
 
-Used by `/wayfinder`. The **map** is a file with one **child** file per ticket.
+Used by `/pm-wayfinder`. The **map** is a file with one **child** file per ticket.
 
 - **Map**: `.scratch/<effort>/map.md` — Destination / Notes / Decisions-so-far / Not yet specified / Out of scope
 - **Child ticket**: `.scratch/<effort>/issues/NN-<slug>.md`, numbered from `01`. A `Type:` line records `research`/`prototype`/`grilling`/`task`; a `Status:` line records `claimed`/`resolved`
@@ -41,7 +41,7 @@ Used by `/wayfinder`. The **map** is a file with one **child** file per ticket.
 - **Frontier**: files in `.scratch/<effort>/issues/` that are open, unblocked, unclaimed; lowest number first
 - **Claim**: set `Status: claimed` and save before any work
 - **Resolve**: append the answer under `## Answer`, set `Status: resolved`, append a gist + link to Decisions-so-far in `map.md`
-- The map's `## Notes` block should name the BL id, and the skills every session must consult: `/vault-knowledge-retrieval`, `/vault-system-thinking`
+- The map's `## Notes` block should name the BL id, and the skills every session must consult: `/pm-vault-knowledge-retrieval`, `/pm-vault-system-thinking`
 
 ## Git, and where it lives
 

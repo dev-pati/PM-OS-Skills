@@ -1,6 +1,6 @@
 # Triage labels
 
-The five canonical triage roles, used by `/triage`. Because the tracker is local markdown, a label is a `Status:` line near the top of the issue file.
+The five canonical triage roles, used by `/pm-triage`. Because the tracker is local markdown, a label is a `Status:` line near the top of the issue file.
 
 | Role | Label string | Meaning |
 |---|---|---|
@@ -19,5 +19,5 @@ BL: BL-16
 
 ## Two extra rules for this repo
 
-1. **`ready-for-agent` requires a passed business gate.** An item cannot be marked ready without a named business problem, the KPI or P&L line it moves, and its BL id. See `/build-connected`.
+1. **`ready-for-agent` requires a passed business gate.** An item cannot be marked ready without a named business problem, the KPI or P&L line it moves, and its BL id. See `/pm-build-connected`.
 2. **`wontfix` still gets a line in the Master Backlog** with the reason. Silent drops are how the same idea gets re-litigated in three months.

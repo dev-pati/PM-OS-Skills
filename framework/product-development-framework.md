@@ -93,13 +93,13 @@ All nine answered **before a spec**. Killing or parking is a successful outcome.
 | **B8** | Smallest version that proves or kills B6 | Full idea smuggled through |
 | **B9** | What happens if we do not build it | "We should anyway" |
 
-Skill: `/build-connected` then `/grilling`. Plane 0 of `/vault-system-thinking` is the same questions; do not answer them twice.
+Skill: `/pm-build-connected` then `/pm-grilling`. Plane 0 of `/pm-vault-system-thinking` is the same questions; do not answer them twice.
 
 ---
 
 ## 4. Gate 2 — Connection (eight-plane Impact Trace)
 
-`/vault-system-thinking`. Reverse trace is the step this product's history shows is always missed.
+`/pm-vault-system-thinking`. Reverse trace is the step this product's history shows is always missed.
 
 | Plane | Question | Canonical source |
 |---|---|---|
@@ -110,7 +110,7 @@ Skill: `/build-connected` then `/grilling`. Plane 0 of `/vault-system-thinking` 
 | **4 Data** | Writers, readers, tenancy (`org_id` vs `user_id` — TD-17), RLS, migration. **Every ads-creating path inserts `launch_batches`** | `architecture/data-flow.canvas` |
 | **5 External** | Permission, via slot, App Review (TD-01). Request only granted fields; isolate optional ones | Meta Graph v25, postmortems |
 | **6 Cross-cutting** | Errors, cache, rate limit, observability (TD-06), testing (TD-12/BL-31/BL-32), flags (none) | Modules §5 |
-| **7 Knowledge** | Docs graph closes **in the same change**. Two-way links. Propagation set complete | `AGENTS.md` §4, `/vault-note-update` |
+| **7 Knowledge** | Docs graph closes **in the same change**. Two-way links. Propagation set complete | `AGENTS.md` §4, `/pm-vault-note-update` |
 
 Every row: `Connected` / `Deferred` / `N-A` + reason. **Every deferred seam costs a TD or BL identifier** plus a PRD gap line. Unnamed deferral is how TD-21 happened.
 
@@ -140,8 +140,8 @@ A change is connected when all of ADR-0002's Definition of Connected holds. Shor
 
 | Step | Skill | Rule |
 |---|---|---|
-| Spec | `/to-spec`, `/prd-and-technical-documentation-generator` | Cite code or mark NEW. Feature folders are **manual-only**. |
-| Tickets | `/to-tickets` | First ticket is the tracer. Blocking edges only. |
+| Spec | `/pm-to-spec`, `/prd-and-technical-documentation-generator` | Cite code or mark NEW. Feature folders are **manual-only**. |
+| Tickets | `/pm-to-tickets` | First ticket is the tracer. Blocking edges only. |
 | Tracer | `/tdd` then `/implement` | End-to-end and observable **outside the UI**: a row written, a Meta object created, a downstream list updated. With thin CI and no observability, a UI-first slice can look finished while every seam is untouched. |
 
 `ready-for-agent` requires a passed Gate 1.
@@ -169,7 +169,7 @@ Do not query or mutate Supabase, SSH, commit, push, or deploy unless the human a
 
 ## 8. Ship + documentation propagation
 
-`/vault-note-update`. One fact → every dependent document, dated `> **Đính chính (DD/MM/YYYY).**` Keep historical AS-IS; overlay current state; never silently rewrite 25–28/07 evidence.
+`/pm-vault-note-update`. One fact → every dependent document, dated `> **Đính chính (DD/MM/YYYY).**` Keep historical AS-IS; overlay current state; never silently rewrite 25–28/07 evidence.
 
 Bound paths (`AGENTS.md` §1–§2): do not rename `product/`, `architecture/`, `reference/handover/`, `src/<feature>/…`. Overwrite the unsuffixed original. Never hand-write `_VerN`. Vault = `.md` / `.canvas` / `.base` / `.mermaid`. Rendered output → `Outputs/<Project>/`. Code → `codebases/AdLauncher/`. Nothing new at workspace root.
 
@@ -307,7 +307,7 @@ Unresolved owners stay unresolved until a human allocates an identifier after a 
 Sơ đồ 10 stage của framework này, dark-theme self-contained HTML:
 `Second Brain/Outputs/shared/playbooks/pm-workflow.html`
 
-Dựng bằng `/architecture-diagram` từ chính note này (§1 spine, §2 intake, §3 Gate 1, §4 Gate 2, §5–§10). Có toolbar export Copy / PNG / PDF. Màu theo semantic của skill: hồng = gate và incident, lam = định nghĩa, lục = build/ship, tím = verify/vault, cam = adoption.
+Dựng bằng `/pm-architecture-diagram` từ chính note này (§1 spine, §2 intake, §3 Gate 1, §4 Gate 2, §5–§10). Có toolbar export Copy / PNG / PDF. Màu theo semantic của skill: hồng = gate và incident, lam = định nghĩa, lục = build/ship, tím = verify/vault, cam = adoption.
 
 Mở lại sau khi sửa framework — file là output tái tạo được, không phải nguồn.
 

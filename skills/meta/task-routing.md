@@ -19,7 +19,7 @@ Order: workspace context → project record → vault → repo docs → code.
 
 1. `workspace/context.md` (always) · `workspace/relationships.md` (if boundary).
 2. `workspace/projects/<slug>.md`.
-3. Vault for `new-ads-launcher`: `CONTEXT.md` → `PROJECT_INDEX.md` → `src/<feature>/PRD/PRD.md` → `product/backlog.md` / `architecture/tech-debt.md` → `runbooks/`, `integrations/`, `postmortems/`. Use `/vault-knowledge-retrieval` for anything beyond one file.
+3. Vault for `new-ads-launcher`: `CONTEXT.md` → `PROJECT_INDEX.md` → `src/<feature>/PRD/PRD.md` → `product/backlog.md` / `architecture/tech-debt.md` → `runbooks/`, `integrations/`, `postmortems/`. Use `/pm-vault-knowledge-retrieval` for anything beyond one file.
 4. Repo `docs/` for ops facts; then `rg -n "<symbol>" <repo>`.
 
 ## 3. Which skills?

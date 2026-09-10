@@ -15,7 +15,7 @@ that you have not narrowed the task.
 
 | Signal in the request | Phase | Read |
 |---|---|---|
-| "build", "add", "should we", no spec yet | A · Discovery | `product-development-framework.md`, then `/build-connected` |
+| "build", "add", "should we", no spec yet | A · Discovery | `product-development-framework.md`, then `/pm-build-connected` |
 | An issue ID, a plan already approved | B · Delivery | `linear-collab.md` |
 | "did anyone use it", "it broke" | C · Adoption | `pm-operating-system.md` §Phase C |
 
@@ -51,12 +51,12 @@ Full verification runs **once, at the end**. Focused checks may run during work.
 Report every result verbatim, including known failures. Do not summarise a failing
 suite as "mostly passing".
 
-Before claiming done, load `/verification-before-completion`.
+Before claiming done, load `/pm-verification-before-completion`.
 
 ## Diagrams
 
 Prefer `/archify`: it validates geometry, proves desktop containment in a real
-browser, and reports SHA-256 receipts. `/architecture-diagram` is the fallback when
+browser, and reports SHA-256 receipts. `/pm-architecture-diagram` is the fallback when
 shell or Node is unavailable — it has **no automated proof**, so state plainly that
 your review was manual.
 
@@ -66,7 +66,7 @@ never into a note folder.
 ## Documentation is part of the change
 
 One fact, every dependent document, two-way links, **in the same change**. Use
-`/vault-note-update` for an existing fact and `/vault-note-creation` for a new
+`/pm-vault-note-update` for an existing fact and `/pm-vault-note-creation` for a new
 document. A deferred seam without an id is an incomplete change.
 
 ## When the framework and reality disagree
