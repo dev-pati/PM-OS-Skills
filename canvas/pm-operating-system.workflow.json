@@ -1,0 +1,305 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "PM Operating System",
+    "quality_profile": "showcase",
+    "views": [
+      {
+        "id": "discovery",
+        "label": "Discovery gates",
+        "focus": [
+          "intake",
+          "gate1",
+          "gate2"
+        ],
+        "note": "Two gates decide whether the work exists at all. Parking or killing here is a successful outcome."
+      },
+      {
+        "id": "delivery",
+        "label": "Delivery loop",
+        "focus": [
+          "spec",
+          "take",
+          "plan_gate",
+          "build"
+        ],
+        "note": "One issue, one accountable executor, and a Linear MCP checkpoint at every stage."
+      },
+      {
+        "id": "rework",
+        "label": "Where work returns",
+        "focus": [
+          "build",
+          "take",
+          "incident",
+          "prevention",
+          "gate2"
+        ],
+        "note": "A failed check returns the work. An incident buys a rule that becomes a future gate question."
+      },
+      {
+        "id": "adoption",
+        "label": "Adoption is the only done",
+        "focus": [
+          "adopted",
+          "incident"
+        ],
+        "note": "Shipped is not adopted. B6 and B7 are re-checked in the runtime, not in the diff."
+      }
+    ]
+  },
+  "lanes": [
+    {
+      "id": "discovery",
+      "label": "Discovery - PM owns"
+    },
+    {
+      "id": "delivery",
+      "label": "Delivery - agent executes"
+    },
+    {
+      "id": "gates",
+      "label": "Gates - human decides",
+      "variant": "exception"
+    },
+    {
+      "id": "learning",
+      "label": "Adoption + learning"
+    }
+  ],
+  "phases": [
+    {
+      "id": "phase_a",
+      "label": "A - Discovery",
+      "fromCol": 0,
+      "toCol": 2
+    },
+    {
+      "id": "phase_b",
+      "label": "B - Delivery loop",
+      "fromCol": 3,
+      "toCol": 4,
+      "variant": "emphasis"
+    }
+  ],
+  "groups": [
+    {
+      "id": "gate_pair",
+      "label": "No spec before both gates pass",
+      "lane": "gates",
+      "fromCol": 1,
+      "toCol": 2,
+      "variant": "security"
+    },
+    {
+      "id": "loop_gates",
+      "label": "Human decision points",
+      "lane": "gates",
+      "fromCol": 4,
+      "toCol": 4,
+      "variant": "security"
+    },
+    {
+      "id": "mcp",
+      "label": "Linear MCP checkpoint at every stage",
+      "lane": "delivery",
+      "fromCol": 3,
+      "toCol": 4,
+      "variant": "dashed"
+    }
+  ],
+  "mainPath": [
+    "intake",
+    "gate1",
+    "gate2",
+    "spec",
+    "take",
+    "plan_gate",
+    "build",
+    "adopted"
+  ],
+  "nodes": [
+    {
+      "id": "intake",
+      "lane": "gates",
+      "col": 0,
+      "type": "external",
+      "label": "Intake",
+      "sublabel": "classify evidence",
+      "tag": "BL / TD id or absence",
+      "width": 124
+    },
+    {
+      "id": "spec",
+      "lane": "discovery",
+      "col": 3,
+      "type": "frontend",
+      "label": "Smallest spec",
+      "sublabel": "tracer first",
+      "tag": "ADR-0002",
+      "width": 124
+    },
+    {
+      "id": "gate1",
+      "lane": "gates",
+      "col": 1,
+      "type": "security",
+      "label": "Gate 1 · Business",
+      "sublabel": "B1-B9 answered",
+      "tag": "fail closed",
+      "width": 124
+    },
+    {
+      "id": "gate2",
+      "lane": "gates",
+      "col": 2,
+      "type": "security",
+      "label": "Gate 2 · Connection",
+      "sublabel": "8-plane trace",
+      "tag": "reverse trace",
+      "width": 124
+    },
+    {
+      "id": "plan_gate",
+      "lane": "gates",
+      "col": 4,
+      "type": "security",
+      "label": "Human gate",
+      "sublabel": "approve, then accept",
+      "tag": "else pause",
+      "width": 124
+    },
+    {
+      "id": "take",
+      "lane": "delivery",
+      "col": 3,
+      "type": "backend",
+      "label": "Take + design",
+      "sublabel": "diagnose + design",
+      "tag": "ready-for-agent",
+      "width": 124
+    },
+    {
+      "id": "build",
+      "lane": "delivery",
+      "col": 4,
+      "type": "backend",
+      "label": "Build + verify",
+      "sublabel": "minimal diff",
+      "tag": "exact commands",
+      "width": 124
+    },
+    {
+      "id": "prevention",
+      "lane": "learning",
+      "col": 2,
+      "type": "messagebus",
+      "label": "Prevention rule",
+      "sublabel": "ordering rule",
+      "tag": "TD / BL id",
+      "width": 124
+    },
+    {
+      "id": "incident",
+      "lane": "learning",
+      "col": 3,
+      "type": "security",
+      "label": "Incident",
+      "sublabel": "measure first",
+      "width": 124
+    },
+    {
+      "id": "adopted",
+      "lane": "learning",
+      "col": 4,
+      "type": "frontend",
+      "label": "Adopted evidence",
+      "sublabel": "the only done",
+      "tag": "runtime observed",
+      "width": 124
+    }
+  ],
+  "edges": [
+    {
+      "id": "intake-gate1",
+      "from": "intake",
+      "to": "gate1",
+      "label": "evidence classified",
+      "variant": "emphasis"
+    },
+    {
+      "id": "gate1-gate2",
+      "from": "gate1",
+      "to": "gate2",
+      "label": "business passed",
+      "variant": "security"
+    },
+    {
+      "id": "gate2-spec",
+      "from": "gate2",
+      "to": "spec",
+      "label": "connected",
+      "variant": "emphasis"
+    },
+    {
+      "id": "spec-take",
+      "from": "spec",
+      "to": "take",
+      "label": "ready-for-agent",
+      "variant": "emphasis"
+    },
+    {
+      "id": "take-plan",
+      "from": "take",
+      "to": "plan_gate",
+      "label": "plan + tradeoffs",
+      "variant": "security"
+    },
+    {
+      "id": "plan-build",
+      "from": "plan_gate",
+      "to": "build",
+      "label": "approved",
+      "variant": "emphasis"
+    },
+    {
+      "id": "build-rework",
+      "from": "build",
+      "to": "take",
+      "label": "fails: rework",
+      "variant": "security",
+      "role": "error"
+    },
+    {
+      "id": "build-adopted",
+      "from": "build",
+      "to": "adopted",
+      "label": "accepted",
+      "variant": "emphasis"
+    },
+    {
+      "id": "adopted-incident",
+      "from": "adopted",
+      "to": "incident",
+      "label": "not adopted or broke",
+      "variant": "dashed",
+      "role": "branch"
+    },
+    {
+      "id": "incident-prevention",
+      "from": "incident",
+      "to": "prevention",
+      "label": "root cause",
+      "variant": "default"
+    },
+    {
+      "id": "prevention-gate2",
+      "from": "prevention",
+      "to": "gate2",
+      "label": "becomes a gate question",
+      "variant": "dashed",
+      "role": "return"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+dispatching-parallel-agents
+executing-plans
+finishing-a-development-branch
+implement
+improve-codebase-architecture
+receiving-code-review
+requesting-code-review
+subagent-driven-development
+test-driven-development
+tdd
+using-git-worktrees
+using-superpowers
+writing-skills

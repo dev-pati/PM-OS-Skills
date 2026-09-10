@@ -1,0 +1,69 @@
+<!-- pm-os:start -->
+<!-- Managed by pati-pm-os v__PMOS_VERSION__. Installed __PMOS_DATE__.
+     Everything between pm-os:start and pm-os:end is overwritten on reinstall.
+     Write your own rules OUTSIDE this block; they are preserved. -->
+
+## PM Operating System
+
+This workspace follows the PATI PM Operating System. Read before non-trivial work.
+
+| Read this | When |
+|---|---|
+| `__PMOS_PATH__/pm-operating-system.md` | Any product work. Three phases, ten stages |
+| `__PMOS_PATH__/product-development-framework.md` | Before a spec exists. Gates B1–B9 + the eight-plane trace |
+| `__PMOS_PATH__/linear-collab.md` | Work is tracked in Linear, or a second person/agent is involved |
+| `__PMOS_PATH__/triage-labels.md` | Assigning or reading a triage label |
+| `Skills/meta/task-routing.md` | Choosing which skills to load |
+
+### Two gates before any spec
+
+**Gate 1 · Business (B1–B9)** — persona, today's workaround and its cost, the named
+problem, which KPI moves, an existing backlog id, adoption hypothesis, the unused
+signal, the smallest version, and what happens if we do not build it.
+
+**Gate 2 · Connection (eight planes)** — business, process, modules (forward *and*
+reverse), API, data, external, cross-cutting, knowledge.
+
+Killing or parking at a gate is a **successful** outcome. Every deferred seam costs
+a `TD-` or `BL-` id.
+
+Skip rule: a genuine one-line bug may skip Gate 1. **Nothing skips Gate 2.**
+
+### Evidence precedence
+
+```text
+runtime  >  commit  >  chat  >  none
+```
+
+Never collapse these. Code beats docs; runtime beats code. A disagreement is a
+finding, not something to paper over.
+
+- A green test run is not a deployment.
+- A skipped required test did not pass.
+- An interrupted external write stays `unknown`, not `failed` or `0 created`.
+- Full verification runs **once, at the end**. Focused checks may run during work.
+
+### Stop conditions
+
+- Three failed fix attempts → pause and escalate. Do not keep trying.
+- No free `BL-`/`TD-` id without a collision → do not mint the next free one.
+- A dirty working tree is not yours to commit.
+- Production impact → contain or roll back first, then diagnose.
+- Never redeploy something you do not understand.
+
+### Diagrams
+
+Prefer `/archify` — it validates geometry, proves desktop containment in a real
+browser, and reports SHA-256 receipts. `/architecture-diagram` is the fallback for
+when shell or Node is unavailable; it has no automated proof, so say so when you use it.
+
+Specs live in `__PMOS_PATH__/../canvas/`. Rendered output goes to
+`Outputs/<Project>/`, never into a note folder.
+
+### Shipped is not done
+
+Adoption re-checks B6 (who opens this, how often) and B7 (how we learn nobody uses it)
+**in the runtime**, not in the diff. An incident buys a structural ordering rule,
+not a patch.
+<!-- pm-os:end -->
+
