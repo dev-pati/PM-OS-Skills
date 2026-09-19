@@ -1,0 +1,420 @@
+{
+ "schema_version": 2,
+ "diagram_type": "workflow",
+ "meta": {
+  "title": "Group B · Matt Pocock Vibecoding (25 skills)",
+  "output": "/tmp/skillmap/B-vibecoding.html",
+  "quality_profile": "showcase"
+ },
+ "lanes": [
+  {
+   "id": "route",
+   "label": "Route / Setup"
+  },
+  {
+   "id": "think",
+   "label": "Sharpen thinking"
+  },
+  {
+   "id": "spec",
+   "label": "Spec + tickets"
+  },
+  {
+   "id": "model",
+   "label": "Design model"
+  },
+  {
+   "id": "build",
+   "label": "Build"
+  },
+  {
+   "id": "review",
+   "label": "Review + ship"
+  },
+  {
+   "id": "support",
+   "label": "Support",
+   "variant": "exception"
+  }
+ ],
+ "phases": [
+  {
+   "id": "p0",
+   "label": "Hoi + lam ro",
+   "fromCol": 0,
+   "toCol": 1
+  },
+  {
+   "id": "p1",
+   "label": "Spec + thiet ke",
+   "fromCol": 2,
+   "toCol": 3,
+   "variant": "emphasis"
+  },
+  {
+   "id": "p2",
+   "label": "Build + review",
+   "fromCol": 4,
+   "toCol": 5,
+   "variant": "dashed"
+  }
+ ],
+ "mainPath": [
+  "ask",
+  "grilling",
+  "tospec",
+  "wayfinder",
+  "totickets",
+  "implement",
+  "review"
+ ],
+ "nodes": [
+  {
+   "id": "ask",
+   "lane": "route",
+   "col": 0,
+   "type": "security",
+   "label": "ask-matt",
+   "sublabel": "router skill",
+   "tag": "entry",
+   "width": 92
+  },
+  {
+   "id": "setup",
+   "lane": "route",
+   "col": 1,
+   "type": "security",
+   "label": "setup-mpc-skills",
+   "sublabel": "tracker + label",
+   "width": 132
+  },
+  {
+   "id": "grilling",
+   "lane": "think",
+   "col": 1,
+   "type": "frontend",
+   "label": "grilling",
+   "sublabel": "stress-test",
+   "width": 92
+  },
+  {
+   "id": "grillme",
+   "lane": "think",
+   "col": 2,
+   "type": "frontend",
+   "label": "grill-me",
+   "sublabel": "interview plan",
+   "width": 92
+  },
+  {
+   "id": "grilldocs",
+   "lane": "think",
+   "col": 3,
+   "type": "frontend",
+   "label": "grill-with-docs",
+   "sublabel": "ADR + glossary",
+   "width": 124
+  },
+  {
+   "id": "quest",
+   "lane": "think",
+   "col": 4,
+   "type": "frontend",
+   "label": "to-questionnaire",
+   "sublabel": "day cau hoi",
+   "width": 132
+  },
+  {
+   "id": "tospec",
+   "lane": "spec",
+   "col": 2,
+   "type": "backend",
+   "label": "to-spec",
+   "sublabel": "hoi thoai -> spec",
+   "width": 95
+  },
+  {
+   "id": "wayfinder",
+   "lane": "spec",
+   "col": 3,
+   "type": "backend",
+   "label": "wayfinder",
+   "sublabel": "map viec da session",
+   "width": 104
+  },
+  {
+   "id": "totickets",
+   "lane": "spec",
+   "col": 4,
+   "type": "backend",
+   "label": "to-tickets",
+   "sublabel": "tracer tickets",
+   "width": 92
+  },
+  {
+   "id": "triage",
+   "lane": "spec",
+   "col": 5,
+   "type": "backend",
+   "label": "triage",
+   "sublabel": "state machine",
+   "width": 92
+  },
+  {
+   "id": "domain",
+   "lane": "model",
+   "col": 2,
+   "type": "database",
+   "label": "domain-modeling",
+   "sublabel": "CONTEXT.md",
+   "width": 124
+  },
+  {
+   "id": "cbdesign",
+   "lane": "model",
+   "col": 3,
+   "type": "database",
+   "label": "codebase-design",
+   "sublabel": "deep module API",
+   "width": 124
+  },
+  {
+   "id": "proto",
+   "lane": "model",
+   "col": 4,
+   "type": "database",
+   "label": "prototype",
+   "sublabel": "throwaway check",
+   "width": 92
+  },
+  {
+   "id": "arch",
+   "lane": "model",
+   "col": 5,
+   "type": "database",
+   "label": "improve-architecture",
+   "sublabel": "scan + report",
+   "width": 160
+  },
+  {
+   "id": "tdd",
+   "lane": "build",
+   "col": 3,
+   "type": "cloud",
+   "label": "tdd",
+   "sublabel": "red-green-refactor",
+   "width": 99
+  },
+  {
+   "id": "implement",
+   "lane": "build",
+   "col": 4,
+   "type": "cloud",
+   "label": "implement",
+   "sublabel": "code theo ticket",
+   "tag": "build",
+   "width": 92
+  },
+  {
+   "id": "diag",
+   "lane": "build",
+   "col": 5,
+   "type": "cloud",
+   "label": "diagnosing-bugs",
+   "sublabel": "chan doan bug",
+   "width": 124
+  },
+  {
+   "id": "review",
+   "lane": "review",
+   "col": 5,
+   "type": "security",
+   "label": "code-review",
+   "sublabel": "standards + bug",
+   "tag": "gate",
+   "width": 96
+  },
+  {
+   "id": "merge",
+   "lane": "review",
+   "col": 4,
+   "type": "security",
+   "label": "resolving-merge",
+   "sublabel": "go merge conflict",
+   "width": 124
+  },
+  {
+   "id": "handoff",
+   "lane": "review",
+   "col": 3,
+   "type": "security",
+   "label": "handoff",
+   "sublabel": "nen cho agent sau",
+   "width": 95
+  },
+  {
+   "id": "research",
+   "lane": "support",
+   "col": 0,
+   "type": "messagebus",
+   "label": "research",
+   "sublabel": "nguon primary",
+   "width": 92
+  },
+  {
+   "id": "teach",
+   "lane": "support",
+   "col": 1,
+   "type": "messagebus",
+   "label": "teach",
+   "sublabel": "day khai niem",
+   "width": 92
+  },
+  {
+   "id": "waitwhat",
+   "lane": "support",
+   "col": 2,
+   "type": "messagebus",
+   "label": "wait-what",
+   "sublabel": "re-pitch",
+   "width": 92
+  },
+  {
+   "id": "wizard",
+   "lane": "support",
+   "col": 3,
+   "type": "messagebus",
+   "label": "wizard",
+   "sublabel": "bash wizard",
+   "width": 92
+  },
+  {
+   "id": "writing",
+   "lane": "support",
+   "col": 4,
+   "type": "messagebus",
+   "label": "writing-for-agents",
+   "sublabel": "viet SKILL.md",
+   "width": 146
+  }
+ ],
+ "edges": [
+  {
+   "from": "ask",
+   "to": "setup",
+   "label": "repo moi",
+   "role": "branch"
+  },
+  {
+   "from": "ask",
+   "to": "grilling",
+   "label": "y tuong mo",
+   "variant": "emphasis"
+  },
+  {
+   "from": "grilling",
+   "to": "grillme",
+   "label": "co plan"
+  },
+  {
+   "from": "grillme",
+   "to": "grilldocs",
+   "label": "can ADR"
+  },
+  {
+   "from": "grilldocs",
+   "to": "quest",
+   "label": "thieu cau tra loi"
+  },
+  {
+   "from": "grilling",
+   "to": "tospec",
+   "label": "da du ro",
+   "variant": "emphasis"
+  },
+  {
+   "from": "tospec",
+   "to": "wayfinder",
+   "label": "viec qua lon"
+  },
+  {
+   "from": "wayfinder",
+   "to": "totickets",
+   "label": "chia ticket"
+  },
+  {
+   "from": "totickets",
+   "to": "triage",
+   "label": "xep hang"
+  },
+  {
+   "from": "tospec",
+   "to": "domain",
+   "label": "can tu vung",
+   "role": "branch"
+  },
+  {
+   "from": "domain",
+   "to": "cbdesign"
+  },
+  {
+   "from": "cbdesign",
+   "to": "proto",
+   "label": "thu state model"
+  },
+  {
+   "from": "proto",
+   "to": "arch",
+   "label": "tim deepening"
+  },
+  {
+   "from": "totickets",
+   "to": "implement",
+   "label": "code",
+   "variant": "emphasis"
+  },
+  {
+   "from": "tdd",
+   "to": "implement",
+   "label": "test-first"
+  },
+  {
+   "from": "implement",
+   "to": "diag",
+   "label": "bug kho"
+  },
+  {
+   "from": "implement",
+   "to": "review",
+   "label": "xong",
+   "variant": "emphasis"
+  },
+  {
+   "from": "merge",
+   "to": "review",
+   "label": "sau merge"
+  },
+  {
+   "from": "handoff",
+   "to": "merge",
+   "label": "chuyen giao",
+   "role": "async"
+  },
+  {
+   "from": "research",
+   "to": "teach"
+  },
+  {
+   "from": "teach",
+   "to": "waitwhat"
+  },
+  {
+   "from": "waitwhat",
+   "to": "wizard"
+  },
+  {
+   "from": "wizard",
+   "to": "writing"
+  }
+ ]
+}

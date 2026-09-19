@@ -1,0 +1,119 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Workflow cài 9Router lên device & sync dữ liệu đo lường",
+    "quality_profile": "showcase",
+    "views": [
+      {
+        "id": "setup",
+        "label": "Cấp code và cài đặt",
+        "focus": ["request_code", "issue_code", "install_cli", "redeem_code", "bind_device"],
+        "note": "Setup code dùng một lần liên kết đúng nhân sự với đúng device."
+      },
+      {
+        "id": "config_sync",
+        "label": "Pull cấu hình",
+        "focus": ["bind_device", "pull_config", "health_check"],
+        "note": "Device nhận cấu hình quản trị theo machineId và xác nhận runtime hoạt động."
+      },
+      {
+        "id": "measurement",
+        "label": "Sync đo lường",
+        "focus": ["health_check", "push_metrics", "aggregate_metrics", "measurement_dashboard"],
+        "note": "Chỉ gửi metadata cần thiết để đo adoption, health, usage và hiệu quả."
+      }
+    ]
+  },
+  "lanes": [
+    { "id": "staff", "label": "Nhân sự" },
+    { "id": "control_plane", "label": "AI Portal / Control Plane" },
+    { "id": "device", "label": "Device + 9Router" },
+    { "id": "measurement", "label": "Measurement" },
+    { "id": "exceptions", "label": "Ngoại lệ", "variant": "exception" }
+  ],
+  "phases": [
+    { "id": "enroll", "label": "Enroll", "fromCol": 0, "toCol": 1 },
+    { "id": "activate", "label": "Cài & kích hoạt", "fromCol": 2, "toCol": 3, "variant": "emphasis" },
+    { "id": "observe", "label": "Sync & đo lường", "fromCol": 4, "toCol": 5, "variant": "dashed" }
+  ],
+  "groups": [
+    { "id": "secure_enrollment", "label": "Secure enrollment", "lane": "control_plane", "fromCol": 0, "toCol": 3, "variant": "security" },
+    { "id": "managed_runtime", "label": "Managed runtime", "lane": "device", "fromCol": 2, "toCol": 4, "variant": "emphasis" },
+    { "id": "measurement_loop", "label": "Measurement loop", "lane": "measurement", "fromCol": 4, "toCol": 5, "variant": "dashed" }
+  ],
+  "mainPath": [
+    "request_code",
+    "issue_code",
+    "install_cli",
+    "redeem_code",
+    "bind_device",
+    "pull_config",
+    "health_check",
+    "push_metrics",
+    "aggregate_metrics",
+    "measurement_dashboard"
+  ],
+  "semanticChecks": {
+    "allowedRoots": ["request_code"],
+    "allowedTerminals": ["measurement_dashboard", "retry_setup"],
+    "requiredPaths": [
+      { "from": "request_code", "to": "health_check" },
+      { "from": "health_check", "to": "measurement_dashboard" }
+    ]
+  },
+  "nodes": [
+    { "id": "request_code", "lane": "staff", "col": 0, "type": "external", "label": "Yêu cầu setup code", "sublabel": "đăng nhập email PATI", "width": 144 },
+    { "id": "issue_code", "lane": "control_plane", "col": 1, "type": "security", "label": "Cấp code một lần", "sublabel": "TTL + staff identity", "tag": "target state", "width": 144 },
+    { "id": "install_cli", "lane": "device", "col": 2, "type": "backend", "label": "Cài 9Router", "sublabel": "npm / installer", "width": 144 },
+    { "id": "redeem_code", "lane": "device", "col": 3, "type": "security", "label": "Nhập setup code", "sublabel": "redeem một lần", "width": 144 },
+    { "id": "bind_device", "lane": "control_plane", "col": 3, "type": "database", "label": "Bind device", "sublabel": "staff + machineId", "tag": "audit", "width": 144 },
+    { "id": "pull_config", "lane": "device", "col": 4, "type": "cloud", "label": "Pull cấu hình", "sublabel": "providers + aliases + policy", "width": 144 },
+    { "id": "health_check", "lane": "device", "col": 5, "type": "backend", "label": "Verify runtime", "sublabel": "version + health + config hash", "width": 144 },
+    { "id": "push_metrics", "lane": "measurement", "col": 4, "type": "messagebus", "label": "Sync telemetry", "sublabel": "heartbeat + usage metadata", "tag": "async", "width": 144 },
+    { "id": "aggregate_metrics", "lane": "measurement", "col": 5, "type": "database", "label": "Tổng hợp metric", "sublabel": "adoption + health + usage", "width": 144 },
+    { "id": "measurement_dashboard", "lane": "staff", "col": 5, "type": "frontend", "label": "Dashboard đo lường", "sublabel": "active devices + value", "width": 144 },
+    { "id": "retry_setup", "lane": "exceptions", "col": 3, "type": "security", "label": "Thu hồi / cấp lại", "sublabel": "expired hoặc sai identity", "width": 144 }
+  ],
+  "edges": [
+    { "id": "request_issue", "from": "request_code", "to": "issue_code", "label": "xác thực", "variant": "security", "role": "main" },
+    { "id": "issue_install", "from": "issue_code", "to": "install_cli", "label": "lệnh cài + code", "variant": "emphasis", "role": "main" },
+    { "id": "install_redeem", "from": "install_cli", "to": "redeem_code", "role": "main" },
+    { "id": "redeem_bind", "from": "redeem_code", "to": "bind_device", "label": "exchange", "variant": "security", "role": "main" },
+    { "id": "bind_pull", "from": "bind_device", "to": "pull_config", "label": "device token", "variant": "emphasis", "role": "main" },
+    { "id": "pull_health", "from": "pull_config", "to": "health_check", "role": "main" },
+    { "id": "health_metrics", "from": "health_check", "to": "push_metrics", "label": "heartbeat định kỳ", "variant": "dashed", "role": "async" },
+    { "id": "metrics_aggregate", "from": "push_metrics", "to": "aggregate_metrics", "label": "batch / dedupe", "variant": "dashed", "role": "main" },
+    { "id": "aggregate_dashboard", "from": "aggregate_metrics", "to": "measurement_dashboard", "label": "KPI", "variant": "emphasis", "role": "main" },
+    { "id": "redeem_failed", "from": "redeem_code", "to": "retry_setup", "label": "invalid / expired", "variant": "security", "role": "error" }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Metric tối thiểu",
+      "items": [
+        "Activation: setup code cấp → redeem → device healthy",
+        "Adoption: active device / staff đủ điều kiện",
+        "Reliability: heartbeat, version, config hash, lỗi sync"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "Đo giá trị",
+      "items": [
+        "Usage: request count, token, model/provider theo kỳ",
+        "Efficiency: token saved, chi phí ước tính, fallback rate",
+        "Retention: active days và last seen theo machineId"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "Ranh giới dữ liệu",
+      "items": [
+        "Không sync prompt, source code, API key hoặc credential",
+        "Setup code một lần; device token có thể thu hồi",
+        "Event có timestamp, schema version và dedupe key"
+      ]
+    }
+  ]
+}

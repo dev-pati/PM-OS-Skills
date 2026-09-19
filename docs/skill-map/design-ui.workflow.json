@@ -1,0 +1,364 @@
+{
+ "schema_version": 2,
+ "diagram_type": "workflow",
+ "meta": {
+  "title": "Group A · Design & UI (21 skills)",
+  "output": "/tmp/skillmap/A-design-ui.html",
+  "quality_profile": "showcase"
+ },
+ "lanes": [
+  {
+   "id": "route",
+   "label": "Route / Decide"
+  },
+  {
+   "id": "direction",
+   "label": "Visual direction"
+  },
+  {
+   "id": "build",
+   "label": "Build UI"
+  },
+  {
+   "id": "motion",
+   "label": "Motion & interaction"
+  },
+  {
+   "id": "audit",
+   "label": "Audit code cu"
+  },
+  {
+   "id": "verify",
+   "label": "Verify",
+   "variant": "exception"
+  }
+ ],
+ "phases": [
+  {
+   "id": "p0",
+   "label": "Chon huong",
+   "fromCol": 0,
+   "toCol": 1
+  },
+  {
+   "id": "p1",
+   "label": "Thiet ke + build",
+   "fromCol": 2,
+   "toCol": 3,
+   "variant": "emphasis"
+  },
+  {
+   "id": "p2",
+   "label": "Polish + kiem chung",
+   "fromCol": 4,
+   "toCol": 5,
+   "variant": "dashed"
+  }
+ ],
+ "mainPath": [
+  "root",
+  "decide",
+  "fd",
+  "upm",
+  "fue",
+  "iface",
+  "react",
+  "better",
+  "verify"
+ ],
+ "nodes": [
+  {
+   "id": "root",
+   "lane": "route",
+   "col": 0,
+   "type": "security",
+   "label": "ui-skills-root",
+   "sublabel": "router UI",
+   "tag": "entry",
+   "width": 117
+  },
+  {
+   "id": "decide",
+   "lane": "route",
+   "col": 1,
+   "type": "security",
+   "label": "pk-ui-decide",
+   "sublabel": "brief + design system",
+   "tag": "gate",
+   "width": 103
+  },
+  {
+   "id": "fd",
+   "lane": "direction",
+   "col": 1,
+   "type": "frontend",
+   "label": "frontend-design",
+   "sublabel": "huong tham my",
+   "width": 124
+  },
+  {
+   "id": "upm",
+   "lane": "direction",
+   "col": 2,
+   "type": "frontend",
+   "label": "ui-ux-pro-max",
+   "sublabel": "style + palette",
+   "width": 110
+  },
+  {
+   "id": "lab",
+   "lane": "direction",
+   "col": 3,
+   "type": "frontend",
+   "label": "design-lab",
+   "sublabel": "5 bien the"
+  },
+  {
+   "id": "bencium",
+   "lane": "direction",
+   "col": 4,
+   "type": "frontend",
+   "label": "bencium-ux",
+   "sublabel": "visual language"
+  },
+  {
+   "id": "impeccable",
+   "lane": "direction",
+   "col": 5,
+   "type": "frontend",
+   "label": "impeccable",
+   "sublabel": "craft anti-generic"
+  },
+  {
+   "id": "fue",
+   "lane": "build",
+   "col": 2,
+   "type": "backend",
+   "label": "frontend-ui-eng",
+   "sublabel": "component + a11y",
+   "width": 124
+  },
+  {
+   "id": "iface",
+   "lane": "build",
+   "col": 3,
+   "type": "backend",
+   "label": "interface-design",
+   "sublabel": "dashboard / SaaS",
+   "width": 132
+  },
+  {
+   "id": "react",
+   "lane": "build",
+   "col": 4,
+   "type": "backend",
+   "label": "react-best-practices",
+   "sublabel": "React + Next",
+   "width": 160
+  },
+  {
+   "id": "better",
+   "lane": "build",
+   "col": 5,
+   "type": "backend",
+   "label": "better-ui",
+   "sublabel": "polish chi tiet"
+  },
+  {
+   "id": "inter",
+   "lane": "motion",
+   "col": 3,
+   "type": "cloud",
+   "label": "interaction-design",
+   "sublabel": "microinteraction",
+   "width": 146
+  },
+  {
+   "id": "taste",
+   "lane": "motion",
+   "col": 4,
+   "type": "cloud",
+   "label": "gpt-tasteskill",
+   "sublabel": "GSAP motion",
+   "width": 117
+  },
+  {
+   "id": "p12",
+   "lane": "motion",
+   "col": 5,
+   "type": "cloud",
+   "label": "12-principles",
+   "sublabel": "review motion",
+   "width": 110
+  },
+  {
+   "id": "impui",
+   "lane": "audit",
+   "col": 0,
+   "type": "messagebus",
+   "label": "improve-ui",
+   "sublabel": "audit surface",
+   "tag": "read-only"
+  },
+  {
+   "id": "imp",
+   "lane": "audit",
+   "col": 1,
+   "type": "messagebus",
+   "label": "improve",
+   "sublabel": "audit codebase"
+  },
+  {
+   "id": "impreact",
+   "lane": "audit",
+   "col": 2,
+   "type": "messagebus",
+   "label": "improve-react",
+   "sublabel": "React Doctor",
+   "width": 110
+  },
+  {
+   "id": "impanim",
+   "lane": "audit",
+   "col": 3,
+   "type": "messagebus",
+   "label": "improve-animations",
+   "sublabel": "audit motion",
+   "width": 146
+  },
+  {
+   "id": "rams",
+   "lane": "audit",
+   "col": 4,
+   "type": "messagebus",
+   "label": "rams",
+   "sublabel": "a11y + visual"
+  },
+  {
+   "id": "wig",
+   "lane": "verify",
+   "col": 4,
+   "type": "security",
+   "label": "web-design-guidelines",
+   "sublabel": "WIG compliance",
+   "width": 168
+  },
+  {
+   "id": "verify",
+   "lane": "verify",
+   "col": 5,
+   "type": "security",
+   "label": "pk-ui-verify",
+   "sublabel": "trace sau implement",
+   "tag": "exit",
+   "width": 103
+  }
+ ],
+ "edges": [
+  {
+   "from": "root",
+   "to": "decide",
+   "label": "UI moi",
+   "variant": "emphasis"
+  },
+  {
+   "from": "root",
+   "to": "impui",
+   "label": "UI da co",
+   "role": "branch"
+  },
+  {
+   "from": "decide",
+   "to": "fd",
+   "label": "chon huong"
+  },
+  {
+   "from": "fd",
+   "to": "upm"
+  },
+  {
+   "from": "upm",
+   "to": "lab",
+   "label": "can nhieu option"
+  },
+  {
+   "from": "lab",
+   "to": "bencium",
+   "label": "brand rieng"
+  },
+  {
+   "from": "bencium",
+   "to": "impeccable",
+   "label": "chot craft"
+  },
+  {
+   "from": "upm",
+   "to": "fue",
+   "label": "build",
+   "variant": "emphasis"
+  },
+  {
+   "from": "fue",
+   "to": "iface",
+   "label": "app noi bo"
+  },
+  {
+   "from": "iface",
+   "to": "react",
+   "label": "React stack"
+  },
+  {
+   "from": "react",
+   "to": "better",
+   "label": "polish"
+  },
+  {
+   "from": "iface",
+   "to": "inter",
+   "label": "them motion",
+   "role": "branch"
+  },
+  {
+   "from": "inter",
+   "to": "taste",
+   "label": "motion nang cao"
+  },
+  {
+   "from": "taste",
+   "to": "p12",
+   "label": "review"
+  },
+  {
+   "from": "impui",
+   "to": "imp",
+   "label": "mo rong scope"
+  },
+  {
+   "from": "imp",
+   "to": "impreact",
+   "label": "React"
+  },
+  {
+   "from": "impreact",
+   "to": "impanim",
+   "label": "motion"
+  },
+  {
+   "from": "impanim",
+   "to": "rams",
+   "label": "a11y"
+  },
+  {
+   "from": "rams",
+   "to": "wig",
+   "label": "guideline",
+   "role": "return"
+  },
+  {
+   "from": "better",
+   "to": "verify",
+   "label": "verify",
+   "variant": "emphasis"
+  }
+ ]
+}

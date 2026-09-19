@@ -1,0 +1,4 @@
+interface:
+  display_name: PATI UI Verify
+  short_description: Frontend UI/layout/interaction/accessibility work, verified live in a real browser rather than from source alone.
+  default_prompt: Implement this frontend change using PATI UI Verify's rules — trace toggles to their real consumer, keep viewport-anchored elements outside scrolled containers, and verify the golden path and edge cases live in the browser before reporting done. If the design direction is unresolved, apply PATI UI Decide first.

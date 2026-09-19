@@ -1,0 +1,290 @@
+{
+ "schema_version": 2,
+ "diagram_type": "workflow",
+ "meta": {
+  "title": "Group D · Knowledge, Comms & Core Loop (16 skills)",
+  "output": "/tmp/skillmap/D-knowledge.html",
+  "quality_profile": "showcase"
+ },
+ "lanes": [
+  {
+   "id": "input",
+   "label": "Input / Research"
+  },
+  {
+   "id": "vault",
+   "label": "Vault knowledge"
+  },
+  {
+   "id": "write",
+   "label": "Write / Publish"
+  },
+  {
+   "id": "loop",
+   "label": "Core dev loop"
+  },
+  {
+   "id": "ship",
+   "label": "Finish",
+   "variant": "exception"
+  }
+ ],
+ "phases": [
+  {
+   "id": "p0",
+   "label": "Thu thap",
+   "fromCol": 0,
+   "toCol": 1
+  },
+  {
+   "id": "p1",
+   "label": "Ghi + xuat ban",
+   "fromCol": 2,
+   "toCol": 3,
+   "variant": "emphasis"
+  },
+  {
+   "id": "p2",
+   "label": "Chay viec",
+   "fromCol": 4,
+   "toCol": 5,
+   "variant": "dashed"
+  }
+ ],
+ "mainPath": [
+  "ur",
+  "retrieve",
+  "create",
+  "update",
+  "md",
+  "cli"
+ ],
+ "nodes": [
+  {
+   "id": "ur",
+   "lane": "input",
+   "col": 0,
+   "type": "messagebus",
+   "label": "user-research",
+   "sublabel": "ICP research",
+   "tag": "entry",
+   "width": 110
+  },
+  {
+   "id": "retrieve",
+   "lane": "vault",
+   "col": 1,
+   "type": "database",
+   "label": "vault-retrieval",
+   "sublabel": "tim truoc",
+   "width": 124
+  },
+  {
+   "id": "create",
+   "lane": "vault",
+   "col": 2,
+   "type": "database",
+   "label": "vault-create",
+   "sublabel": "tao PRD",
+   "width": 103
+  },
+  {
+   "id": "update",
+   "lane": "vault",
+   "col": 3,
+   "type": "database",
+   "label": "vault-update",
+   "sublabel": "sua doc",
+   "width": 103
+  },
+  {
+   "id": "sys",
+   "lane": "vault",
+   "col": 4,
+   "type": "database",
+   "label": "vault-system",
+   "sublabel": "trace plane",
+   "width": 103
+  },
+  {
+   "id": "md",
+   "lane": "write",
+   "col": 4,
+   "type": "frontend",
+   "label": "obsidian-md",
+   "sublabel": "wikilink",
+   "width": 96
+  },
+  {
+   "id": "cli",
+   "lane": "write",
+   "col": 5,
+   "type": "frontend",
+   "label": "obsidian-cli",
+   "sublabel": "doc/ghi vault",
+   "width": 103
+  },
+  {
+   "id": "comms",
+   "lane": "write",
+   "col": 3,
+   "type": "frontend",
+   "label": "internal-comms",
+   "sublabel": "comms noi bo",
+   "width": 117
+  },
+  {
+   "id": "canvas",
+   "lane": "write",
+   "col": 2,
+   "type": "frontend",
+   "label": "html-canvas",
+   "sublabel": "proposal",
+   "width": 96
+  },
+  {
+   "id": "ppt",
+   "lane": "write",
+   "col": 1,
+   "type": "frontend",
+   "label": "html-ppt",
+   "sublabel": "slide HTML",
+   "width": 92
+  },
+  {
+   "id": "brain",
+   "lane": "loop",
+   "col": 0,
+   "type": "cloud",
+   "label": "brainstorming",
+   "sublabel": "truoc viec moi",
+   "tag": "entry",
+   "width": 110
+  },
+  {
+   "id": "plans",
+   "lane": "loop",
+   "col": 1,
+   "type": "cloud",
+   "label": "writing-plans",
+   "sublabel": "spec -> plan",
+   "width": 110
+  },
+  {
+   "id": "wt",
+   "lane": "loop",
+   "col": 2,
+   "type": "cloud",
+   "label": "git-worktrees",
+   "sublabel": "co lap repo",
+   "width": 110
+  },
+  {
+   "id": "disp",
+   "lane": "loop",
+   "col": 3,
+   "type": "cloud",
+   "label": "parallel-agents",
+   "sublabel": "2+ viec",
+   "width": 124
+  },
+  {
+   "id": "verif",
+   "lane": "ship",
+   "col": 4,
+   "type": "security",
+   "label": "verification",
+   "sublabel": "kiem truoc xong",
+   "width": 103
+  },
+  {
+   "id": "finish",
+   "lane": "ship",
+   "col": 5,
+   "type": "security",
+   "label": "finish-branch",
+   "sublabel": "merge hay bo",
+   "tag": "exit",
+   "width": 110
+  }
+ ],
+ "edges": [
+  {
+   "from": "ur",
+   "to": "retrieve",
+   "label": "co insight",
+   "variant": "emphasis"
+  },
+  {
+   "from": "retrieve",
+   "to": "create",
+   "label": "chua co note"
+  },
+  {
+   "from": "create",
+   "to": "update",
+   "label": "da co note",
+   "variant": "emphasis"
+  },
+  {
+   "from": "update",
+   "to": "sys",
+   "label": "anh huong he thong"
+  },
+  {
+   "from": "update",
+   "to": "md",
+   "label": "format",
+   "role": "branch"
+  },
+  {
+   "from": "md",
+   "to": "cli",
+   "label": "ghi vao vault"
+  },
+  {
+   "from": "create",
+   "to": "comms",
+   "label": "can thong bao",
+   "role": "branch"
+  },
+  {
+   "from": "canvas",
+   "to": "comms",
+   "label": "proposal"
+  },
+  {
+   "from": "ppt",
+   "to": "canvas",
+   "label": "slide"
+  },
+  {
+   "from": "brain",
+   "to": "plans",
+   "label": "chot huong",
+   "variant": "emphasis"
+  },
+  {
+   "from": "plans",
+   "to": "wt",
+   "label": "co lap"
+  },
+  {
+   "from": "wt",
+   "to": "disp",
+   "label": "chia song song"
+  },
+  {
+   "from": "disp",
+   "to": "verif",
+   "label": "gom ket qua",
+   "variant": "emphasis"
+  },
+  {
+   "from": "verif",
+   "to": "finish",
+   "label": "dat",
+   "variant": "emphasis"
+  }
+ ]
+}

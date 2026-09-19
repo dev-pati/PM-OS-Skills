@@ -1,0 +1,4 @@
+interface:
+  display_name: PATI UI Decide
+  short_description: Choose a distinctive, evidence-backed UI direction and concrete design system before implementation.
+  default_prompt: Read the product brief, state the design read, query the smallest relevant UI/UX Pro Max datasets, apply Frontend Design's anti-template discipline, and return a concrete visual system with rationale and implementation guidance.

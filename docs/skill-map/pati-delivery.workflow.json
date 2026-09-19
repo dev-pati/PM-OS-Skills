@@ -1,0 +1,274 @@
+{
+ "schema_version": 2,
+ "diagram_type": "workflow",
+ "meta": {
+  "title": "Group C · PATI Delivery + Security/Data (14 skills)",
+  "output": "/tmp/skillmap/C-delivery.html",
+  "quality_profile": "showcase"
+ },
+ "lanes": [
+  {
+   "id": "gate",
+   "label": "Business gate"
+  },
+  {
+   "id": "spec",
+   "label": "Spec + design"
+  },
+  {
+   "id": "build",
+   "label": "Build"
+  },
+  {
+   "id": "test",
+   "label": "Test"
+  },
+  {
+   "id": "sec",
+   "label": "Security"
+  },
+  {
+   "id": "data",
+   "label": "Data layer"
+  },
+  {
+   "id": "ship",
+   "label": "Ship",
+   "variant": "exception"
+  }
+ ],
+ "phases": [
+  {
+   "id": "p0",
+   "label": "Gate + spec",
+   "fromCol": 0,
+   "toCol": 1
+  },
+  {
+   "id": "p1",
+   "label": "Build + test",
+   "fromCol": 2,
+   "toCol": 3,
+   "variant": "emphasis"
+  },
+  {
+   "id": "p2",
+   "label": "Review + ship",
+   "fromCol": 4,
+   "toCol": 5,
+   "variant": "dashed"
+  }
+ ],
+ "mainPath": [
+  "bc",
+  "specs",
+  "forge",
+  "bug",
+  "e2e",
+  "review",
+  "git"
+ ],
+ "nodes": [
+  {
+   "id": "bc",
+   "lane": "gate",
+   "col": 0,
+   "type": "security",
+   "label": "pk-build-connected",
+   "sublabel": "BL gate + KPI",
+   "tag": "entry",
+   "width": 146
+  },
+  {
+   "id": "specs",
+   "lane": "spec",
+   "col": 1,
+   "type": "backend",
+   "label": "pk-specs",
+   "sublabel": "PRD nghiem ngat",
+   "width": 92
+  },
+  {
+   "id": "arch",
+   "lane": "spec",
+   "col": 2,
+   "type": "backend",
+   "label": "pk-architecture-diagram",
+   "sublabel": "archify HTML",
+   "width": 182
+  },
+  {
+   "id": "pony",
+   "lane": "spec",
+   "col": 3,
+   "type": "backend",
+   "label": "pk-ponytail",
+   "sublabel": "lazy dev, YAGNI",
+   "width": 96
+  },
+  {
+   "id": "forge",
+   "lane": "build",
+   "col": 2,
+   "type": "cloud",
+   "label": "pk-pati-forge",
+   "sublabel": "forge workflow",
+   "width": 110
+  },
+  {
+   "id": "bug",
+   "lane": "test",
+   "col": 3,
+   "type": "cloud",
+   "label": "pk-bug-reproduction",
+   "sublabel": "repro toi thieu",
+   "width": 153
+  },
+  {
+   "id": "e2e",
+   "lane": "test",
+   "col": 4,
+   "type": "cloud",
+   "label": "pk-e2e-testing",
+   "sublabel": "Playwright POM",
+   "width": 117
+  },
+  {
+   "id": "sec",
+   "lane": "sec",
+   "col": 3,
+   "type": "security",
+   "label": "pk-security-best",
+   "sublabel": "OWASP review",
+   "width": 132
+  },
+  {
+   "id": "threat",
+   "lane": "sec",
+   "col": 4,
+   "type": "security",
+   "label": "pk-threat-model",
+   "sublabel": "threat model repo",
+   "width": 124
+  },
+  {
+   "id": "diff",
+   "lane": "sec",
+   "col": 5,
+   "type": "security",
+   "label": "pk-differential-review",
+   "sublabel": "security diff",
+   "width": 175
+  },
+  {
+   "id": "sup",
+   "lane": "data",
+   "col": 2,
+   "type": "database",
+   "label": "pk-supabase",
+   "sublabel": "Supabase API",
+   "width": 96
+  },
+  {
+   "id": "pg",
+   "lane": "data",
+   "col": 3,
+   "type": "database",
+   "label": "pk-supabase-postgres",
+   "sublabel": "Postgres practices",
+   "width": 160
+  },
+  {
+   "id": "review",
+   "lane": "ship",
+   "col": 4,
+   "type": "messagebus",
+   "label": "pk-pati-review",
+   "sublabel": "review truoc PR",
+   "width": 117
+  },
+  {
+   "id": "git",
+   "lane": "ship",
+   "col": 5,
+   "type": "messagebus",
+   "label": "pk-pati-git",
+   "sublabel": "commit + PR",
+   "tag": "exit",
+   "width": 96
+  }
+ ],
+ "edges": [
+  {
+   "from": "bc",
+   "to": "specs",
+   "label": "qua gate",
+   "variant": "emphasis"
+  },
+  {
+   "from": "specs",
+   "to": "arch",
+   "label": "ve he thong"
+  },
+  {
+   "from": "arch",
+   "to": "pony",
+   "label": "cat scope"
+  },
+  {
+   "from": "specs",
+   "to": "forge",
+   "label": "build",
+   "variant": "emphasis"
+  },
+  {
+   "from": "forge",
+   "to": "sup",
+   "label": "can DB",
+   "role": "branch"
+  },
+  {
+   "from": "sup",
+   "to": "pg",
+   "label": "toi uu SQL"
+  },
+  {
+   "from": "forge",
+   "to": "bug",
+   "label": "co bug",
+   "role": "branch"
+  },
+  {
+   "from": "bug",
+   "to": "e2e",
+   "label": "chot test"
+  },
+  {
+   "from": "forge",
+   "to": "sec",
+   "label": "code nhay cam",
+   "role": "branch"
+  },
+  {
+   "from": "sec",
+   "to": "threat"
+  },
+  {
+   "from": "threat",
+   "to": "diff",
+   "label": "soi diff"
+  },
+  {
+   "from": "e2e",
+   "to": "review",
+   "label": "test xanh",
+   "variant": "emphasis"
+  },
+  {
+   "from": "review",
+   "to": "git",
+   "label": "mo PR",
+   "variant": "emphasis"
+  }
+ ]
+}

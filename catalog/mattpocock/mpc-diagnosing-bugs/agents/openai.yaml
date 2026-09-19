@@ -1,0 +1,3 @@
+interface:
+  display_name: "MPC · Diagnosing Bugs"
+  short_description: "Diagnose hard bugs and regressions"
